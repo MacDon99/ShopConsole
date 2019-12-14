@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/maciej-workspace/Workspace/ShopConsole/ShopConsole.csproj",
+      "projectUniqueName": "/home/maciej-workspace/Workspace/ShopConsole/ShopConsole/ShopConsole.csproj",
       "projectName": "ShopConsole",
-      "projectPath": "/home/maciej-workspace/Workspace/ShopConsole/ShopConsole.csproj",
+      "projectPath": "/home/maciej-workspace/Workspace/ShopConsole/ShopConsole/ShopConsole.csproj",
       "packagesPath": "/home/maciej-workspace/.nuget/packages/",
-      "outputPath": "/home/maciej-workspace/Workspace/ShopConsole/obj/",
+      "outputPath": "/home/maciej-workspace/Workspace/ShopConsole/ShopConsole/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/maciej-workspace/.nuget/NuGet/NuGet.Config"
