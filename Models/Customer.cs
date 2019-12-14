@@ -11,7 +11,18 @@ namespace ShopConsole.Models
         public string PostCode { get; private set; }
         public string City { get; private set; }
         public int Nip { get; private set; }
+        public Basket basket { get; set;}
 
+        public Customer()
+        {
+            basket = new Basket();
+        }
+        public Customer(string firstname, string lastname)
+        {
+            basket = new Basket();
+            FirstName = firstname;
+            LastName = lastname;
+        }
         public void ChangeName(string firstname, string lastname)
         {
             if(string.IsNullOrWhiteSpace(firstname) || string.IsNullOrWhiteSpace(lastname))

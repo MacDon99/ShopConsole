@@ -7,7 +7,12 @@ namespace ShopConsole
         public string Name { get; private set; }
         public int Nip { get; private set; }
         
-        public void SetName(string name)
+        public Company(string name, int nip)
+        {
+            Name = name;
+            Nip = nip;
+        }
+        public void ChangeName(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
             {
@@ -22,7 +27,7 @@ namespace ShopConsole
             }
             Name = name;
         }
-        public void SetNip(int nip)
+        public void ChangeNip(int nip)
         {
             if(nip == Nip)
             {
