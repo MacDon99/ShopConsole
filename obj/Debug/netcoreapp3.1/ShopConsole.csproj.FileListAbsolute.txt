@@ -1,0 +1,11 @@
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole.deps.json
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole.runtimeconfig.json
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole.runtimeconfig.dev.json
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole.dll
+/home/maciej-workspace/Workspace/ShopConsole/bin/Debug/netcoreapp3.1/ShopConsole.pdb
+/home/maciej-workspace/Workspace/ShopConsole/obj/Debug/netcoreapp3.1/ShopConsole.csprojAssemblyReference.cache
+/home/maciej-workspace/Workspace/ShopConsole/obj/Debug/netcoreapp3.1/ShopConsole.AssemblyInfoInputs.cache
+/home/maciej-workspace/Workspace/ShopConsole/obj/Debug/netcoreapp3.1/ShopConsole.AssemblyInfo.cs
+/home/maciej-workspace/Workspace/ShopConsole/obj/Debug/netcoreapp3.1/ShopConsole.dll
+/home/maciej-workspace/Workspace/ShopConsole/obj/Debug/netcoreapp3.1/ShopConsole.pdb
