@@ -16,10 +16,10 @@ namespace ShopConsole
         List<Article> Articles { get; set; }
         public void ReceiveArticles(Wholesaler wholesaler)
         {
-            string answer="-1";
+            string answer;
             do
             {
-                System.Console.WriteLine("Chose an item to receive");
+                System.Console.WriteLine("Chose an item(id) to receive product or type x to exit.");
                 foreach (var item in wholesaler.Articles)
                 {
                     System.Console.WriteLine($"Id: {item.Id} Name: {item.Name}");
@@ -41,8 +41,22 @@ namespace ShopConsole
                         DrawDetails(wholesaler.Articles[Convert.ToInt32(answer)]);
                         System.Console.WriteLine("How much do you want to buy?");
                         int buyerQuantity = Convert.ToInt32(Console.ReadLine());
-                        
-                        System.Console.WriteLine("Type y if you want to receive more products or x if that's all you want.");
+                        wholesaler.Articles[Convert.ToInt32(answer)].Quantity -= buyerQuantity;
+                        int id = 0;
+                        if(Articles is null)
+                        {
+                                 id=0;
+                         }
+                        else
+                        {
+                            id = Articles.Count;
+                        }
+                        Article article = new Article(id,wholesaler.Articles[Convert.ToInt32(answer)].Name,buyerQuantity,wholesaler.Articles[Convert.ToInt32(answer)].ExpirationDate );
+                        if(Articles is null)
+                        {
+                            Articles = new List<Article>();
+                        }
+                        Articles.Add(article);
                     }
                     break;
                 }
@@ -50,13 +64,21 @@ namespace ShopConsole
             } while (answer != "x");
 
         }
-        public void SellProducts()
+        public static void SellProducts()
         {
 
         }
         private void DrawDetails(Article article)
         {
             Console.WriteLine($"Id: {article.Id} \nName: {article.Name}\nStorage Quantity: {article.Quantity}\nExpiration Date: {article.ExpirationDate}");
+        }
+        public void DrawArticles()
+        {
+            System.Console.WriteLine("Storage has: ");
+            foreach(var article in Articles)
+            {
+               Console.WriteLine($"Name: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate}");
+            }
         }
     }
 }
