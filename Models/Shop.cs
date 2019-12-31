@@ -7,6 +7,7 @@ namespace ShopConsole
 {
     public class Shop
     {
+        public int x = 0;
         public Shop(string shopName)
         {
             this.ShopName = shopName;
@@ -33,11 +34,22 @@ namespace ShopConsole
                     break;
                     default: 
                     {
-                        if (wholesaler.Articles[Convert.ToInt32(answer)] is null)
+                        try
+                        {
+                            Convert.ToInt32(answer);
+                        }
+                        catch
+                        {
+                            System.Console.WriteLine("Wrong item Id!");
+                            return;
+                        }
+
+                        if (wholesaler.Articles.Count-1 != Convert.ToInt32(answer))
                             {
                                 System.Console.WriteLine("Wrong item Id!");
                                 return;
                             }
+                            
                         DrawDetails(wholesaler.Articles[Convert.ToInt32(answer)]);
                         System.Console.WriteLine("How much do you want to buy?");
                         int buyerQuantity = Convert.ToInt32(Console.ReadLine());
