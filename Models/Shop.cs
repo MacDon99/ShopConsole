@@ -7,14 +7,13 @@ namespace ShopConsole
 {
     public class Shop
     {
-        public int x = 0;
+        public string ShopName { get; set; }
+        List<Article> Articles { get; set; }
         public Shop(string shopName)
         {
             this.ShopName = shopName;
-
         }
-        public string ShopName { get; set; }
-        List<Article> Articles { get; set; }
+
         public void ReceiveArticles(Wholesaler wholesaler)
         {
             string answer;
@@ -41,19 +40,35 @@ namespace ShopConsole
                         catch
                         {
                             System.Console.WriteLine("Wrong item Id!");
-                            return;
+                            break;
                         }
 
-                        if (wholesaler.Articles.Count-1 != Convert.ToInt32(answer))
+                        if (wholesaler.Articles.Count-1 < Convert.ToInt32(answer))
                             {
                                 System.Console.WriteLine("Wrong item Id!");
-                                return;
+                                break;
                             }
                             
                         DrawDetails(wholesaler.Articles[Convert.ToInt32(answer)]);
                         System.Console.WriteLine("How much do you want to buy?");
-                        int buyerQuantity = Convert.ToInt32(Console.ReadLine());
-                        wholesaler.Articles[Convert.ToInt32(answer)].Quantity -= buyerQuantity;
+                        var buyerQuantity = Console.ReadLine();
+
+                        try
+                        {
+                            Convert.ToInt32(buyerQuantity);
+                        }
+                        catch
+                        {
+                            System.Console.WriteLine("Wrong number!");
+                            break;
+                        }
+                        
+                        if(wholesaler.Articles[Convert.ToInt32(answer)].Quantity < Convert.ToInt32(buyerQuantity))
+                        {
+                            System.Console.WriteLine("There's not enough stuff!");
+                            break;
+                        }
+                        wholesaler.Articles[Convert.ToInt32(answer)].Quantity -= Convert.ToInt32(buyerQuantity);
                         int id = 0;
                         if(Articles is null)
                         {
@@ -63,7 +78,7 @@ namespace ShopConsole
                         {
                             id = Articles.Count;
                         }
-                        Article article = new Article(id,wholesaler.Articles[Convert.ToInt32(answer)].Name,buyerQuantity,wholesaler.Articles[Convert.ToInt32(answer)].ExpirationDate );
+                        Article article = new Article(id,wholesaler.Articles[Convert.ToInt32(answer)].Name,Convert.ToInt32(buyerQuantity),wholesaler.Articles[Convert.ToInt32(answer)].ExpirationDate );
                         if(Articles is null)
                         {
                             Articles = new List<Article>();

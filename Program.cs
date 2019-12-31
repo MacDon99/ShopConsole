@@ -12,8 +12,7 @@ namespace ShopConsole
             wholesaler.AddArticle("bakłażan",5,DateTime.Now);
             Shop shop = new Shop("MaciejShop");
             shop.ReceiveArticles(wholesaler);
-          //  shop.DrawArticles();
-            
+            shop.DrawArticles();         
         }
     }
 }
