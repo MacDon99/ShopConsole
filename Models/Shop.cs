@@ -22,7 +22,7 @@ namespace ShopConsole
                 System.Console.WriteLine("Chose an item(id) to receive product or type x to exit.");
                 foreach (var item in wholesaler.Articles)
                 {
-                    System.Console.WriteLine($"Id: {item.Id} Name: {item.Name}");
+                    System.Console.WriteLine($"Id: {item.Id} Name: {item.Name} Quantity: {item.Quantity}");
                 }
 
                 answer= Console.ReadLine();
@@ -78,7 +78,7 @@ namespace ShopConsole
                         {
                             id = Articles.Count;
                         }
-                        Article article = new Article(id,wholesaler.Articles[Convert.ToInt32(answer)].Name,Convert.ToInt32(buyerQuantity),wholesaler.Articles[Convert.ToInt32(answer)].ExpirationDate );
+                        Article article = new Article(id,wholesaler.Articles[Convert.ToInt32(answer)].Name,Convert.ToInt32(buyerQuantity),wholesaler.Articles[Convert.ToInt32(answer)].ExpirationDate, wholesaler.Articles[Convert.ToInt32(answer)].TotalPrice );
                         if(Articles is null)
                         {
                             Articles = new List<Article>();
@@ -99,11 +99,17 @@ namespace ShopConsole
             do
             {
                 System.Console.WriteLine("Here is the list of our products. Choose one by typing the id.");
+                try
+                {
                 foreach(var item in Articles)
                     {
-                        DrawDetails(item);
+                        System.Console.WriteLine($"Id: {item.Id} Name: {item.Name} Quantity: {item.Quantity}");
                     }
-
+                }
+                catch
+                {
+                    System.Console.WriteLine("Storage is empty!");
+                }
                 answer= Console.ReadLine();
 
                 switch (answer)
@@ -157,9 +163,10 @@ namespace ShopConsole
                         {
                             id = Articles.Count;
                         }
-                        Article article = new Article(id,Articles[Convert.ToInt32(answer)].Name,Convert.ToInt32(buyerQuantity),Articles[Convert.ToInt32(answer)].ExpirationDate );
+                        Article article = new Article(id,Articles[Convert.ToInt32(answer)].Name,Convert.ToInt32(buyerQuantity),Articles[Convert.ToInt32(answer)].ExpirationDate,Articles[Convert.ToInt32(answer)].TotalPrice );
                         
                         customer.basket.ArticlesToBuy.Add(article);
+                        customer.basket.RequiredMoney += article.TotalPrice * article.Quantity;
                     }
                     break;
                 }
@@ -172,15 +179,40 @@ namespace ShopConsole
         }
         private void DrawDetails(Article article)
         {
+
             Console.WriteLine($"Id: {article.Id} \nName: {article.Name}\nStorage Quantity: {article.Quantity}\nExpiration Date: {article.ExpirationDate}");
+            
+
         }
         public void DrawArticles()
         {
-            System.Console.WriteLine("Storage has: ");
-            foreach(var article in Articles)
+            try
             {
-               Console.WriteLine($"Name: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate}");
+                System.Console.Write("Storage has: ");
+                foreach(var article in Articles)
+            {
+               Console.WriteLine($"\nName: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate}\n");
             }
+            }
+            catch
+            {
+                Console.WriteLine("no items!");
+            }
+        }
+        public void AddArticle(string name, int quantity, DateTime expirationdate, decimal price)
+        {
+             int id = 0;
+            if(Articles is null)
+            {
+                id=0;
+                Articles = new List<Article>();
+            }
+            else
+            {
+                id = Articles.Count;
+            }
+            Article article = new Article(id,name,quantity,expirationdate,price);
+            Articles.Add(article);
         }
     }
 }

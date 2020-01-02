@@ -83,8 +83,10 @@ namespace ShopConsole.Models
             System.Console.WriteLine("Your Basket has: ");
             foreach(var article in basket.ArticlesToBuy)
             {
-               Console.WriteLine($"Name: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate}");
+               Console.WriteLine($"Name: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate} Total Cost: {article.Quantity}*{article.TotalPrice} = {article.Quantity*article.TotalPrice}");
             }
+               System.Console.WriteLine($"You have to pay: {basket.RequiredMoney}$ for your shopping.");
+
         }
     }
 }
