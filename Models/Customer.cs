@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ShopConsole.Models
 {
@@ -16,6 +17,7 @@ namespace ShopConsole.Models
         public Customer()
         {
             basket = new Basket();
+            basket.ArticlesToBuy = new List<Article>();
         }
         public Customer(string firstname, string lastname)
         {
@@ -74,6 +76,15 @@ namespace ShopConsole.Models
             PostCode = postcode;
             City = city;
             Nip = nip;
+        }
+
+        public void DrawArticles()
+        {
+            System.Console.WriteLine("Your Basket has: ");
+            foreach(var article in basket.ArticlesToBuy)
+            {
+               Console.WriteLine($"Name: {article.Name} Storage Quantity: {article.Quantity} Expiration Date: {article.ExpirationDate}");
+            }
         }
     }
 }
