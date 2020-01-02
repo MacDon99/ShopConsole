@@ -21,14 +21,14 @@ namespace ShopConsole
             string odp="";
             do
             {
-                System.Console.WriteLine("Welcome to our ShopSystem.\n At first you have to declare if you are a shop owner (o) or just a client (c) by typing o or c. ");
+                System.Console.WriteLine("Welcome to our ShopSystem.\nAt first you have to declare if you are a shop owner (o) or just a client (c) by typing o or c. ");
                 odp = Console.ReadLine();
                 switch(odp)
                 {
                     case "o":
                     do
                     {
-                    System.Console.WriteLine("You are in shop management system.\n Do you want to buy articles(b) or see what you have in storage?(s)");
+                    System.Console.WriteLine("You are in shop management system.\nDo you want to buy articles(b) or see what you have in storage?(s)");
                     odp = Console.ReadLine();
                     switch(odp)
                     {
@@ -44,7 +44,7 @@ namespace ShopConsole
                     case "c":
                     do
                     {
-                        System.Console.WriteLine("You are a client in a shop.\n Do you want to buy articles(a) or to see your basket(b)?");
+                        System.Console.WriteLine("You are a client in a shop.\nDo you want to buy articles(a) or to see your basket(b)?");
                         odp = Console.ReadLine();
                         switch(odp)
                         {
